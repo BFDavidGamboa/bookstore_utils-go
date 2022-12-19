@@ -29,7 +29,7 @@ type logger struct {
 func init() {
 	logConfig := zap.Config{
 		OutputPaths: []string{getOutput()},
-		Level:       zap.NewAtomicLevelAt(zap.InfoLevel),
+		Level:       zap.NewAtomicLevelAt(getLevel()),
 		Encoding:    "json",
 		EncoderConfig: zapcore.EncoderConfig{
 			LevelKey:     "level",
