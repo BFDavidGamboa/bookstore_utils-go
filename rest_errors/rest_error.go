@@ -90,3 +90,15 @@ func NewInternalServerError(message string, err error) RestErr {
 	}
 	return result
 }
+
+func NewConflictError(message string, err error) RestErr {
+	result := restErr{
+		ErrMessage: message,
+		ErrStatus:  http.StatusConflict,
+		ErrError:   "conflict",
+	}
+	if err != nil {
+		result.ErrCauses = append(result.ErrCauses, err.Error())
+	}
+	return result
+}
